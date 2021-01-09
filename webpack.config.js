@@ -28,8 +28,6 @@ const config = (mode) => {
       alias: {
         '@': path.resolve(__dirname, 'src'),
         '@components': path.resolve(__dirname, 'src', 'components'),
-        '@common': path.resolve(__dirname, 'src', 'components', 'common'),
-        '@pages': path.resolve(__dirname, 'src', 'components', 'pages'),
         '@styles': path.resolve(__dirname, 'src', 'styles'),
         'lodash-es': path.resolve(__dirname, 'node_modules', 'lodash'),
       },
@@ -61,110 +59,6 @@ const config = (mode) => {
               },
             },
             'postcss-loader',
-          ],
-        },
-        {
-          test: /\.(png|jpe?g|gif|webm)$/,
-          use: [
-            {
-              loader: 'url-loader',
-              options: {
-                limit: 1024,
-                fallback: 'file-loader',
-                name: '[name].[hash:8].[ext]',
-                outputPath: './images/',
-                esModule: false,
-              },
-            },
-            {
-              loader: 'image-webpack-loader',
-              options: {
-                disable: mode === 'development', // disables image optimization in development mode
-                mozjpeg: {
-                  dcScanOpt: 0, // disables grayscale steps for progrssive jpeg
-                },
-              },
-            },
-          ],
-        },
-        {
-          test: /\.(png|jpe?g|gif|webm)$/,
-          use: [
-            {
-              loader: 'url-loader',
-              options: {
-                limit: 1024,
-                fallback: 'file-loader',
-                name: '[name].[hash:8].[ext]',
-                outputPath: './images/',
-                esModule: false,
-              },
-            },
-            {
-              loader: 'image-webpack-loader',
-              options: {
-                disable: mode === 'development', // disables image optimization in development mode
-                mozjpeg: {
-                  dcScanOpt: 0, // disables grayscale steps for progrssive jpeg
-                },
-              },
-            },
-          ],
-        },
-        {
-          test: /\.svg$/,
-          use: [
-            {
-              loader: 'svg-url-loader',
-              options: {
-                limit: 1024,
-                name: '[name].[hash:8].[ext]',
-                outputPath: './images/',
-                esModule: false,
-              },
-            },
-            {
-              loader: 'image-webpack-loader',
-              options: {
-                disable: mode === 'development', // disables image optimization in development mode
-              },
-            },
-          ],
-        },
-        {
-          test: /\.(woff2?)$/,
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: '[name].[ext]',
-                outputPath: './fonts/',
-              },
-            },
-          ],
-        },
-        {
-          test: /\.mp3$/,
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: '[name].[ext]',
-                outputPath: './audio/',
-              },
-            },
-          ],
-        },
-        {
-          test: /\.(mp4|webm)$/,
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: '[name].[ext]',
-                outputPath: './video/',
-              },
-            },
           ],
         },
       ],
