@@ -2,9 +2,7 @@ import App from './components/App.vue';
 
 import Vue from 'vue';
 
-import 'normalize.css';
-import '@styles/reset.scss';
-
+import '@styles/global.css';
 
 new Vue({
   render: (h) => h(App),
