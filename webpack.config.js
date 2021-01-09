@@ -67,7 +67,7 @@ const config = (mode) => {
       new CleanWebpackPlugin(),
       new MiniCssExtractPlugin(),
       new HtmlWebpackPlugin({
-        title: 'App',
+        title: 'Windowsize?',
         template: './src/index.html',
         inject: true,
       }),
