@@ -77,6 +77,12 @@
     font-family: monospace;
   }
 
+  @media (prefers-color-scheme: dark) {
+    html {
+      filter: invert(1);
+    }
+  }
+
   th {
     font-weight: normal;
   }
