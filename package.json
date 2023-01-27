@@ -11,6 +11,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@vercel/analytics": "^0.1.8",
     "sass": "^1.55.0",
     "vue": "^3.2.41"
   },
