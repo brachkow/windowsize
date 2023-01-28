@@ -64,7 +64,7 @@
 <style lang="scss">
   html {
     font-size: 14px;
-    font-family: monospace;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
   }
 
   body {
