@@ -5,6 +5,7 @@
   import getDeviceViewportDimensions from '@/utils/getDeviceViewportDimensions';
   import getBrowserViewportDimensions from '@/utils/getBrowserViewportDimensions';
   import getBrowserWindowDimensions from '@/utils/getBrowserWindowDimensions';
+  import VRow from '@/components/VRow.vue';
 
   const deviceScreen = ref<Dimensions>();
   const deviceViewport = ref<Dimensions>();
@@ -35,30 +36,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Device screen physical resolution</td>
-          <td>{{ deviceScreen?.width }}</td>
-          <td>{{ deviceScreen?.height }}</td>
-          <td>{{ deviceScreen?.aspectRatio }}</td>
-        </tr>
-        <tr>
-          <td>Device screen resolution</td>
-          <td>{{ deviceViewport?.width }}</td>
-          <td>{{ deviceViewport?.height }}</td>
-          <td>{{ deviceViewport?.aspectRatio }}</td>
-        </tr>
-        <tr>
-          <td>Browser viewport resolution</td>
-          <td>{{ browserViewport?.width }}</td>
-          <td>{{ browserViewport?.height }}</td>
-          <td>{{ browserViewport?.aspectRatio }}</td>
-        </tr>
-        <tr>
-          <td>Browser window size</td>
-          <td>{{ browserWindow?.width }}</td>
-          <td>{{ browserWindow?.height }}</td>
-          <td>{{ browserWindow?.aspectRatio }}</td>
-        </tr>
+        <VRow label="Device screen physical resolution" v-bind="deviceScreen" />
+        <VRow label="Device screen resolution" v-bind="deviceViewport" />
+        <VRow label="Browser viewport resolution" v-bind="browserViewport" />
+        <VRow label="Browser window size" v-bind="browserWindow" />
       </tbody>
       <tfoot>
         <tr>
