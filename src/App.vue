@@ -1,70 +1,15 @@
 <script setup lang="ts">
   import { onMounted, ref } from 'vue';
-
-  interface Dimensions {
-    width: number;
-    height: number;
-    aspectRatio: string;
-  }
+  import type { Dimensions } from '@/types';
+  import getDeviceScreenDimensions from '@/utils/getDeviceScreenDimensions';
+  import getDeviceViewportDimensions from '@/utils/getDeviceViewportDimensions';
+  import getBrowserViewportDimensions from '@/utils/getBrowserViewportDimensions';
+  import getBrowserWindowDimensions from '@/utils/getBrowserWindowDimensions';
 
   const deviceScreen = ref<Dimensions>();
   const deviceViewport = ref<Dimensions>();
   const browserViewport = ref<Dimensions>();
   const browserWindow = ref<Dimensions>();
-
-  const gcd = (a: number, b: number): number => {
-    if (!b) {
-      return a;
-    }
-
-    return gcd(b, a % b);
-  };
-
-  const aspectRatio = (width: number, height: number) => {
-    const divisor = gcd(width, height);
-    return `${width / divisor}:${height / divisor}`;
-  };
-
-  const getDeviceScreenDimensions = (): Dimensions => {
-    let { width, height } = screen;
-    const { devicePixelRatio: dpr } = window;
-
-    width = width * dpr;
-    height = height * dpr;
-
-    return {
-      width,
-      height,
-      aspectRatio: aspectRatio(width, height),
-    };
-  };
-
-  const getDeviceViewportDimensions = (): Dimensions => {
-    const { width, height } = screen;
-    return {
-      width,
-      height,
-      aspectRatio: aspectRatio(width, height),
-    };
-  };
-
-  const getBrowserViewportDimensions = (): Dimensions => {
-    const { innerWidth: width, innerHeight: height } = window;
-    return {
-      width,
-      height,
-      aspectRatio: aspectRatio(width, height),
-    };
-  };
-
-  const getBrowserWindowDimensions = (): Dimensions => {
-    const { outerWidth: width, outerHeight: height } = window;
-    return {
-      width,
-      height,
-      aspectRatio: aspectRatio(width, height),
-    };
-  };
 
   const calculate = () => {
     deviceScreen.value = getDeviceScreenDimensions();
