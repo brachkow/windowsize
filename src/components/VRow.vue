@@ -14,8 +14,8 @@
 <template>
   <tr>
     <td>{{ label }}</td>
-    <td>{{ width }}</td>
-    <td>{{ height }}</td>
+    <td>{{ width }}px</td>
+    <td>{{ height }}px</td>
     <td>{{ aspectRatio }}</td>
   </tr>
 </template>

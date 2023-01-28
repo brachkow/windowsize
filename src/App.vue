@@ -41,11 +41,6 @@
         <VRow label="Browser viewport resolution" v-bind="browserViewport" />
         <VRow label="Browser window size" v-bind="browserWindow" />
       </tbody>
-      <tfoot>
-        <tr>
-          <td colspan="4">all values are in px</td>
-        </tr>
-      </tfoot>
     </table>
   </main>
   <footer>
