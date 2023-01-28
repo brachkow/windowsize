@@ -36,10 +36,22 @@
         </tr>
       </thead>
       <tbody>
-        <VRow label="Device screen physical resolution" v-bind="deviceScreen" />
-        <VRow label="Device screen resolution" v-bind="deviceViewport" />
-        <VRow label="Browser viewport resolution" v-bind="browserViewport" />
-        <VRow label="Browser window size" v-bind="browserWindow" />
+        <VRow
+          v-if="deviceScreen"
+          label="Device screen physical resolution"
+          v-bind="deviceScreen" />
+        <VRow
+          v-if="deviceViewport"
+          label="Device screen resolution"
+          v-bind="deviceViewport" />
+        <VRow
+          v-if="browserViewport"
+          label="Browser viewport resolution"
+          v-bind="browserViewport" />
+        <VRow
+          v-if="browserWindow"
+          label="Browser window size"
+          v-bind="browserWindow" />
       </tbody>
     </table>
   </main>
