@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-  import type { Dimensions } from '@/types/Dimensions';
-
   interface Props {
     label: string;
     width: number;
