@@ -79,12 +79,6 @@
     min-height: calc(100vh - var(--body-padding) * 2);
   }
 
-  @media (prefers-color-scheme: dark) {
-    html {
-      filter: invert(1);
-    }
-  }
-
   th {
     font-weight: normal;
   }
