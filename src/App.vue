@@ -83,6 +83,14 @@
     font-weight: normal;
   }
 
+  td {
+    vertical-align: top;
+  }
+
+  th {
+    vertical-align: bottom;
+  }
+
   table {
     width: 100%;
     border-collapse: collapse;
@@ -91,7 +99,6 @@
   thead,
   tbody {
     td {
-      vertical-align: top;
       border-bottom: 1px solid black;
     }
   }
