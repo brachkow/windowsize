@@ -91,6 +91,7 @@
   thead,
   tbody {
     td {
+      vertical-align: top;
       border-bottom: 1px solid black;
     }
   }
