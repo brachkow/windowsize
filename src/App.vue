@@ -82,7 +82,7 @@
   </footer>
 </template>
 
-<style lang="scss">
+<style>
   html {
     font-size: 14px;
     font-family: 'JetBrains Mono', 'Fira Code', monospace;
