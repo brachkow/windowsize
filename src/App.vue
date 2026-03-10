@@ -1,22 +1,37 @@
 <script setup lang="ts">
   import { onMounted, ref } from 'vue';
-  import type { Dimensions } from '@/types';
-  import getDeviceScreenDimensions from '@/utils/getDeviceScreenDimensions';
-  import getDeviceViewportDimensions from '@/utils/getDeviceViewportDimensions';
-  import getBrowserViewportDimensions from '@/utils/getBrowserViewportDimensions';
-  import getBrowserWindowDimensions from '@/utils/getBrowserWindowDimensions';
-  import VRow from '@/components/VRow.vue';
 
-  const deviceScreen = ref<Dimensions>();
-  const deviceViewport = ref<Dimensions>();
-  const browserViewport = ref<Dimensions>();
-  const browserWindow = ref<Dimensions>();
+  interface Dimensions {
+    label: string;
+    width: number;
+    height: number;
+    aspectRatio: string;
+  }
+
+  const gcd = (a: number, b: number): number => (!b ? a : gcd(b, a % b));
+
+  const aspectRatio = (width: number, height: number) => {
+    const divisor = gcd(width, height);
+    return `${width / divisor}:${height / divisor}`;
+  };
+
+  const makeDimensions = (label: string, width: number, height: number): Dimensions => ({
+    label,
+    width,
+    height,
+    aspectRatio: aspectRatio(width, height),
+  });
+
+  const rows = ref<Dimensions[]>([]);
 
   const calculate = () => {
-    deviceScreen.value = getDeviceScreenDimensions();
-    deviceViewport.value = getDeviceViewportDimensions();
-    browserViewport.value = getBrowserViewportDimensions();
-    browserWindow.value = getBrowserWindowDimensions();
+    const dpr = window.devicePixelRatio;
+    rows.value = [
+      makeDimensions('Device screen physical resolution', screen.width * dpr, screen.height * dpr),
+      makeDimensions('Device screen resolution', screen.width, screen.height),
+      makeDimensions('Browser viewport resolution', window.innerWidth, window.innerHeight),
+      makeDimensions('Browser window size', window.outerWidth, window.outerHeight),
+    ];
   };
 
   window.addEventListener('resize', calculate);
@@ -36,22 +51,12 @@
         </tr>
       </thead>
       <tbody>
-        <VRow
-          v-if="deviceScreen"
-          label="Device screen physical resolution"
-          v-bind="deviceScreen" />
-        <VRow
-          v-if="deviceViewport"
-          label="Device screen resolution"
-          v-bind="deviceViewport" />
-        <VRow
-          v-if="browserViewport"
-          label="Browser viewport resolution"
-          v-bind="browserViewport" />
-        <VRow
-          v-if="browserWindow"
-          label="Browser window size"
-          v-bind="browserWindow" />
+        <tr v-for="row in rows" :key="row.label">
+          <td>{{ row.label }}</td>
+          <td>{{ row.width }}px</td>
+          <td>{{ row.height }}px</td>
+          <td>{{ row.aspectRatio }}</td>
+        </tr>
       </tbody>
     </table>
   </main>
