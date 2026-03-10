@@ -8,14 +8,18 @@
     aspectRatio: string;
   }
 
-  const gcd = (a: number, b: number): number => (!b ? a : gcd(b, a % b));
+  const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : a);
 
   const aspectRatio = (width: number, height: number) => {
     const divisor = gcd(width, height);
     return `${width / divisor}:${height / divisor}`;
   };
 
-  const makeDimensions = (label: string, width: number, height: number): Dimensions => ({
+  const makeDimensions = (
+    label: string,
+    width: number,
+    height: number,
+  ): Dimensions => ({
     label,
     width,
     height,
@@ -27,10 +31,22 @@
   const calculate = () => {
     const dpr = window.devicePixelRatio;
     rows.value = [
-      makeDimensions('Device screen physical resolution', screen.width * dpr, screen.height * dpr),
+      makeDimensions(
+        'Device screen physical resolution',
+        screen.width * dpr,
+        screen.height * dpr,
+      ),
       makeDimensions('Device screen resolution', screen.width, screen.height),
-      makeDimensions('Browser viewport resolution', window.innerWidth, window.innerHeight),
-      makeDimensions('Browser window size', window.outerWidth, window.outerHeight),
+      makeDimensions(
+        'Browser viewport resolution',
+        window.innerWidth,
+        window.innerHeight,
+      ),
+      makeDimensions(
+        'Browser window size',
+        window.outerWidth,
+        window.outerHeight,
+      ),
     ];
   };
 
