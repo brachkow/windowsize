@@ -84,8 +84,26 @@
 
 <style>
   html {
+    --color-text: black;
+    --color-bg: white;
+    --color-border: black;
+
     font-size: 14px;
     font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html {
+      --color-text: white;
+      --color-bg: black;
+      --color-border: white;
+    }
+  }
+
+  a {
+    color: inherit;
   }
 
   body {
@@ -120,7 +138,7 @@
   thead,
   tbody {
     td {
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid var(--color-border);
     }
   }
 
